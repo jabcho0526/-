@@ -2,13 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>카메라 촬영</title>
+  <title>촬영</title>
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
   <div class="center">
-    <h2>카메라로 4컷 찍기</h2>
-    <video id="video" autoplay playsinline width="480" height="360"></video>
+    <h2 id="stepText">1 / 4 촬영</h2>
+
+    <div class="camera-wrap">
+      <video id="video" autoplay playsinline></video>
+      <img id="poseOverlay">
+      <div id="countdown">3</div>
+    </div>
+
     <div id="controls">
       <button id="captureBtn" class="btn">촬영</button>
       <span id="count">0 / 4</span>
@@ -16,10 +22,7 @@
 
     <div id="thumbs"></div>
 
-    <div style="margin-top:20px;">
-      <button id="uploadBtn" class="btn" disabled>업로드 및 합성</button>
-      <a href="/frame" class="btn">프레임 다시 선택</a>
-    </div>
+    <button id="uploadBtn" class="btn" disabled>업로드</button>
   </div>
 
   <script>
