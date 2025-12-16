@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>선생님 선택</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="center">
+    <h2>선생님을 선택하세요</h2>
+
+    <form method="post">
+      <div class="frames">
+        {% for f in frames %}
+        <label class="frame-item">
+          <input type="radio" name="frame" value="{{ f }}" required>
+          <div>{{ f }}</div>
+        </label>
+        {% endfor %}
+      </div>
+
+      <button class="btn" type="submit">촬영 시작</button>
+    </form>
+  </div>
+</body>
+</html>
