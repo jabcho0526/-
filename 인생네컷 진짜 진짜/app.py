@@ -102,6 +102,15 @@ def upload():
         out_path = os.path.join(app.config['UPLOAD_FOLDER'], 'result.jpg')
         canvas.save(out_path, 'JPEG', quality=90)
 
+        saved_files = []
+
+        for i in range(4):
+            filename = f"result{i}.jpg"
+            path = os.path.join(app.static_folder, filename)
+            imgs[i].save(path, format="JPEG", quality=90)
+            saved_files.append(filename)
+
+
         return jsonify({'result_url': '/static/result.jpg'})
 
     except Exception as e:
@@ -110,6 +119,17 @@ def upload():
 @app.route('/result')
 def result():
     return render_template('result.html', ts=int(datetime.now().timestamp()))
+
+@app.route('/print')
+def print_page():
+    images = [
+        "result0.jpg",
+        "result1.jpg",
+        "result2.jpg",
+        "result3.jpg"
+    ]
+    return render_template("print.html", images=images)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)
